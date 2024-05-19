@@ -1,10 +1,6 @@
 package main
 
 import (
-	"context"
-	"fmt"
-	"github.com/jackc/pgx/v5/pgxpool"
-	"log"
 	"net/http"
 	"news-api/adapter/in/rest"
 	outAdapter "news-api/adapter/out"
@@ -12,24 +8,24 @@ import (
 )
 
 func main() {
-	ctx := context.Background()
-	connectionString := fmt.Sprintf(
-		"postgres://%s:%s@%s:%s/%s",
-		"postgres",
-		"password",
-		"localhost",
-		"5432",
-		"postgres",
-	)
-	d, err := pgxpool.New(ctx, connectionString)
-	if err != nil {
-		log.Fatalln("Can not connect to sql")
-	}
-	err = d.Ping(ctx)
-	if err != nil {
-		log.Fatalln("Can not connect to sql")
-	}
-	defer d.Close()
+	//ctx := context.Background()
+	//connectionString := fmt.Sprintf(
+	//	"postgres://%s:%s@%s:%s/%s",
+	//	"postgres",
+	//	"password",
+	//	"localhost",
+	//	"5432",
+	//	"postgres",
+	//)
+	//d, err := pgxpool.New(ctx, connectionString)
+	//if err != nil {
+	//	log.Fatalln("Can not connect to sql")
+	//}
+	//err = d.Ping(ctx)
+	//if err != nil {
+	//	log.Fatalln("Can not connect to sql")
+	//}
+	//defer d.Close()
 	//init adapter
 	dummyAdapter := outAdapter.NewDummyAdapter()
 
