@@ -10,13 +10,21 @@ type DummyHandler struct {
 	dummyUseCase inport.Dummy
 }
 
+type Test struct {
+	Name string
+	Age  int
+}
+
 func NewDummyHandler(dummyUseCase inport.Dummy) *DummyHandler {
 	return &DummyHandler{dummyUseCase: dummyUseCase}
 }
 
 func (d *DummyHandler) Dummy(response http.ResponseWriter, request *http.Request) {
-	dummyOutput := d.dummyUseCase.Get()
+	//dummyOutput := d.dummyUseCase.Get()
 	response.Header().Set("Content-Type", "application/json")
 	response.WriteHeader(http.StatusOK)
-	json.NewEncoder(response).Encode(dummyOutput)
+	json.NewEncoder(response).Encode(APIResponse[any]{
+		StatusCode: 404,
+		Message:    "Not Found",
+	})
 }
