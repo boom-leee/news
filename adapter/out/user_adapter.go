@@ -3,7 +3,7 @@ package outAdapter
 import (
 	"context"
 	"github.com/jackc/pgx/v5/pgxpool"
-	"news-api/internal/db"
+	db2 "news-api/postgres/db"
 )
 
 type UserAdapter struct {
@@ -14,8 +14,8 @@ func NewUserAdapter(pool *pgxpool.Pool) *UserAdapter {
 	return &UserAdapter{pool: pool}
 }
 
-func (u *UserAdapter) Get() ([]db.User, error) {
-	query := db.New(u.pool)
+func (u *UserAdapter) Get() ([]db2.User, error) {
+	query := db2.New(u.pool)
 
 	return query.GetAllUsers(context.Background())
 

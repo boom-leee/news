@@ -4,9 +4,8 @@ import (
 	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5/pgtype"
 	inport "news-api/application/port/in"
+	"news-api/postgres/db"
 	"time"
-
-	"news-api/internal/db"
 )
 
 func MapUser(user db.User) *inport.User {
